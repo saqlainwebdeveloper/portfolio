@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { IconX, IconMenu2 } from "@tabler/icons-react";
+import Image from "next/image";
 import {
   motion,
   AnimatePresence,
@@ -235,11 +236,12 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <img
-        src="logo.png"
+      <Image
+        src="/logo.png"
         alt="logo"
         width={30}
         height={30}
+        priority
       />
       <span className="font-medium text-white dark:text-white">Muhammad Saqlain Shoukat</span>
     </a>
@@ -282,5 +284,5 @@ export const NavbarButton = <T extends React.ElementType = "a">({
     >
       {children}
     </Tag>
-  );
+  );  
 };
