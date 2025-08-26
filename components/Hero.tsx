@@ -64,7 +64,7 @@ export function Hero() {
           rel="noopener noreferrer"
         >
           <button className="cursor-pointer px-4 sm:px-6 py-2 sm:py-3 text-blue-400 font-semibold text-base sm:text-lg border-2 border-blue-400 rounded-lg hover:text-white hover:bg-blue-400 transition-all">
-            Let's talk
+            Let&apos;s talk
           </button>
         </a>
       </div>

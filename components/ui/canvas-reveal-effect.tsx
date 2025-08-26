@@ -146,13 +146,13 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
   );
 };
 
-type InputUniform =
-  | number
-  | number[]
-  | number[][]
-  | THREE.Vector2
-  | THREE.Vector3
-  | THREE.Vector3[];
+// type InputUniform =
+//   | number
+//   | number[]
+//   | number[][]
+//   | THREE.Vector2
+//   | THREE.Vector3
+//   | THREE.Vector3[];
 
 type Uniforms = {
   [key: string]: {
@@ -262,7 +262,7 @@ const ShaderMaterial = ({
     });
 
     return materialObject;
-  }, [size.width, size.height, source]);
+  }, [size.width, size.height, source, getUniforms]);
 
   return (
     <mesh ref={ref}>
