@@ -12,7 +12,7 @@ export function Hero() {
     >
       {/* Name */}
       <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 text-white leading-snug">
-        Hi I'm{" "}
+        Hi I&apos;m{" "}
         <span className="text-transparent text-stroke2">Saqlain</span>
       </h1>
 
@@ -33,7 +33,7 @@ export function Hero() {
 
       {/* Description */}
       <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-10 leading-relaxed max-w-md sm:max-w-2xl md:max-w-3xl mx-auto text-center font-medium">
-        Hi, I'm{" "}
+        Hi, I&apos;m{" "}
         <span className="text-blue-400 font-semibold">
           Muhammad Saqlain Shoukat
         </span>{" "}

@@ -46,7 +46,7 @@ export function Services() {
               Web Developer
             </h2>
             <p className="text-neutral-300 text-sm md:text-base mb-4">
-              I’m Saqlain, a web developer skilled in HTML, CSS, JavaScript, React JS and Next JS. I don't just build responsive, user-friendly websites , I also teach with awesome style.
+              I&apos;m Saqlain, a web developer skilled in HTML, CSS, JavaScript, React JS and Next JS. I don't just build responsive, user-friendly websites , I also teach with awesome style.
             </p>
             <a
               href="https://www.instagram.com/codingchatroom/"
@@ -69,7 +69,7 @@ export function Services() {
               Ethical Hacker
             </h2>
             <p className="text-neutral-300 text-sm md:text-base mb-4">
-              I’m Saqlain, an ethical hacker with a focus on security and
+              I&apos;m Saqlain, an ethical hacker with a focus on security and
               penetration testing. I specialize in Phishing Attack, MITM Attack, SQL Injection, Tools and ensuring systems are secure.
             </p>
             <a
