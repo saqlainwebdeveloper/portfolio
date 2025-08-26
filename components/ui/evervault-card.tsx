@@ -63,7 +63,11 @@ export function CardPattern({
   randomString: string;
 }) {
   const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  const style = { maskImage, WebkitMaskImage: maskImage } as const;
+
+  const style: React.CSSProperties = {
+    maskImage: maskImage as unknown as string,
+    WebkitMaskImage: maskImage as unknown as string,
+  };
 
   return (
     <div className="pointer-events-none">
@@ -94,23 +98,16 @@ export const generateRandomString = (length: number) => {
   return result;
 };
 
-// Optional icon
-export const Icon = ({
-  className,
-  ...rest
-}: {
-  className?: string;
-  [key: string]: any;
-}) => {
+// Fixed Icon type to avoid `any`
+export const Icon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      strokeWidth={1.5}
       stroke="currentColor"
-      className={className}
-      {...rest}
+      {...props}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
     </svg>

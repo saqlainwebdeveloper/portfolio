@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -16,9 +17,10 @@ export default function About() {
 
         {/* Profile Image with Spin */}
        <div className="relative w-48 h-48 flex justify-center items-center mb-8">
-  <img
-    src="me.jpg"
+  <Image
+    src="/me.jpg"
     alt="Saqlain"
+    fill
     className="w-full h-full rounded-full border-2 border-blue-400 object-cover"
   />
   <div className="circle-spin"></div>
