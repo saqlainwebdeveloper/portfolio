@@ -1,7 +1,7 @@
 "use client";
-import { useMotionValue } from "motion/react";
+
 import React, { useState, useEffect, ReactNode } from "react";
-import { useMotionTemplate, motion } from "motion/react";
+import { motion, useMotionValue, useMotionTemplate, MotionValue } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const EvervaultCard = ({
@@ -11,9 +11,8 @@ export const EvervaultCard = ({
   text?: string | ReactNode;
   className?: string;
 }) => {
-  // const instead of let
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const mouseX: MotionValue<number> = useMotionValue(0);
+  const mouseY: MotionValue<number> = useMotionValue(0);
 
   const [randomString, setRandomString] = useState("");
 
@@ -22,15 +21,14 @@ export const EvervaultCard = ({
     setRandomString(str);
   }, []);
 
-  // typed event instead of any
-  function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const { left, top } = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - left);
-    mouseY.set(e.clientY - top);
+  const onMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const { left, top } = event.currentTarget.getBoundingClientRect();
+    mouseX.set(event.clientX - left);
+    mouseY.set(event.clientY - top);
 
     const str = generateRandomString(1500);
     setRandomString(str);
-  }
+  };
 
   return (
     <div
@@ -55,22 +53,21 @@ export const EvervaultCard = ({
   );
 };
 
-// typed props instead of any
 export function CardPattern({
   mouseX,
   mouseY,
   randomString,
 }: {
-  mouseX: ReturnType<typeof useMotionValue>;
-  mouseY: ReturnType<typeof useMotionValue>;
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
   randomString: string;
 }) {
   const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  const style: React.CSSProperties = { maskImage, WebkitMaskImage: maskImage };
+  const style = { maskImage, WebkitMaskImage: maskImage } as const;
 
   return (
     <div className="pointer-events-none">
-      <div className="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50"></div>
+      <div className="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50" />
       <motion.div
         className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500 to-blue-700 opacity-0 group-hover/card:opacity-100 backdrop-blur-xl transition duration-500"
         style={style}
@@ -87,9 +84,8 @@ export function CardPattern({
   );
 }
 
-const characters =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
+// Random string generator
+const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 export const generateRandomString = (length: number) => {
   let result = "";
   for (let i = 0; i < length; i++) {
@@ -98,12 +94,13 @@ export const generateRandomString = (length: number) => {
   return result;
 };
 
+// Optional icon
 export const Icon = ({
   className,
   ...rest
 }: {
   className?: string;
-  [key: string]: unknown;
+  [key: string]: any;
 }) => {
   return (
     <svg
