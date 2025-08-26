@@ -46,7 +46,7 @@ export function Services() {
               Web Developer
             </h2>
             <p className="text-neutral-300 text-sm md:text-base mb-4">
-              I&apos;m Saqlain, a web developer skilled in HTML, CSS, JavaScript, React JS and Next JS. I don't just build responsive, user-friendly websites , I also teach with awesome style.
+              I&apos;m Saqlain, a web developer skilled in HTML, CSS, JavaScript, React JS and Next JS. I don&apos;t just build responsive, user-friendly websites , I also teach with awesome style.
             </p>
             <a
               href="https://www.instagram.com/codingchatroom/"
