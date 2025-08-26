@@ -11,20 +11,22 @@ export const EvervaultCard = ({
   text?: string | ReactNode;
   className?: string;
 }) => {
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
+  // const instead of let
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   const [randomString, setRandomString] = useState("");
 
   useEffect(() => {
-    let str = generateRandomString(1500);
+    const str = generateRandomString(1500);
     setRandomString(str);
   }, []);
 
-  function onMouseMove({ currentTarget, clientX, clientY }: any) {
-    let { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+  // typed event instead of any
+  function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
 
     const str = generateRandomString(1500);
     setRandomString(str);
@@ -53,9 +55,18 @@ export const EvervaultCard = ({
   );
 };
 
-export function CardPattern({ mouseX, mouseY, randomString }: any) {
-  let maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  let style = { maskImage, WebkitMaskImage: maskImage };
+// typed props instead of any
+export function CardPattern({
+  mouseX,
+  mouseY,
+  randomString,
+}: {
+  mouseX: ReturnType<typeof useMotionValue>;
+  mouseY: ReturnType<typeof useMotionValue>;
+  randomString: string;
+}) {
+  const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
+  const style: React.CSSProperties = { maskImage, WebkitMaskImage: maskImage };
 
   return (
     <div className="pointer-events-none">
@@ -76,7 +87,9 @@ export function CardPattern({ mouseX, mouseY, randomString }: any) {
   );
 }
 
-const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+const characters =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
 export const generateRandomString = (length: number) => {
   let result = "";
   for (let i = 0; i < length; i++) {
@@ -90,7 +103,7 @@ export const Icon = ({
   ...rest
 }: {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <svg
